@@ -1,0 +1,36 @@
+{
+  "name": "codeteam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cusen11/codeteam.git"
+  },
+  "author": "Thành Tuân",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cusen11/codeteam/issues"
+  },
+  "homepage": "https://github.com/cusen11/codeteam#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.5.0",
+    "config": "^3.3.8",
+    "create-react-app": "^5.0.1",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20",
+    "request": "^2.88.2"
+  }
+}
