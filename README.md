@@ -22,5 +22,4 @@ tại server và client
 
 ### run cả 2 cùng lúc
 
-//
 `npm run dev`
