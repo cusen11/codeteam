@@ -1,0 +1,39 @@
+.button-primary {
+  background: #3498db;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #3498db;
+}
+.button-primary:hover {
+  background: #fff;
+  color: #3498db;
+}
+.button-danger {
+  background: #d35400;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #d35400;
+}
+.button-danger:hover {
+  background: #fff;
+  color: #d35400;
+}
+.button-warning {
+  background: #f1c40f;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #f1c40f;
+}
+.button-warning:hover {
+  background: #fff;
+  color: #f1c40f;
+}
