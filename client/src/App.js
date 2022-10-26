@@ -1,4 +1,5 @@
 import Button from "./Component/Button/Button";
+import Links from "./Component/Links/Links";
 
 function App() {
   return (
@@ -6,6 +7,9 @@ function App() {
       <Button classNumType="button-primary" text="Button Primary" />
       <Button classNumType="button-danger" text="Button Danger" />
       <Button classNumType="button-warning" text="Button Warning" />
+      <br/>
+      <Links href="abc.com"/>
+      <Links href="abc1.com"/>
     </>
   );
 }
