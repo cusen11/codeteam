@@ -37,4 +37,29 @@
   background: #fff;
   color: #f1c40f;
 }
-
+.button-green{
+  background: #2ecc71;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #2ecc71;
+}
+.button-green:hover {
+  background: #fff;
+  color: #2ecc71;
+}
+.button-gray{
+  background: #95a5a6;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #95a5a6;
+}
+.button-gray:hover {
+  background: #fff;
+  color: #95a5a6;
+}
