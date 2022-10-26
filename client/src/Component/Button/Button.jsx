@@ -8,7 +8,7 @@ Button.propTypes = {
   // Kiểu text isRequired bắt buộc phải có
   text: PropTypes.string.isRequired,
   // Kiểu text không bắt buộc phải có
-  classType: PropTypes.string,
+  classNumType: PropTypes.string,
 };
 // props là dử liệu được lấy từ component cha khi gọi nó vào
 // VD : <Button classNumType="button-primary" text="Button Primary" /> (1)
