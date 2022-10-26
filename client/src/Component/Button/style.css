@@ -37,4 +37,63 @@
   background: #fff;
   color: #f1c40f;
 }
+.button-green {
+  background: #28a745;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #28a745;
+}
+.button-green:hover {
+  background: #fff;
+  color: #28a745;
+}
+.button-gray {
+  background: #6c757d;
+  outline: 0;
+  border: 0;
+  padding: 4px 15px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #6c757d;
+}
+.button-gray:hover {
+  background: #fff;
+  color: #6c757d;
+}
+a{
+  text-decoration: none;
+}
+.link01, .link02{
+  display: inline-block;
+  margin-top: 20px;
+}
+.link01 a {
+  display: block;
+  background: #007bff;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  padding: 4px 15px;
+  color: #fff;
+}
+.link01 a:hover {
+  background: #fff;
+  color: #007bff;
+}
+.link02 a {
+  display: block;
+  background: #563d7c;
+  cursor: pointer;
+  border: 1px solid #563d7c;
+  padding: 4px 15px;
+  color: #fff;
+}
+.link02 a:hover {
+  background: #fff;
+  color: #563d7c;
+  text-decoration: none;
+}
+
 
