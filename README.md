@@ -2,11 +2,11 @@
 
 Project improve performance working for my team.
 
+### Vào folder client --> cd client
+
 ## Install
 
-`npm i`
-
-// vào folder client --> cd client
+tại server và client
 
 `npm i`
 
@@ -18,7 +18,6 @@ Project improve performance working for my team.
 
 ### front-end
 
-// vào folder client --> cd client
 `npm start`
 
 ### run cả 2 cùng lúc
