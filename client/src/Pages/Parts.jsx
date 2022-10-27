@@ -8,11 +8,11 @@ function Parts() {
             <Button classNumType="button-primary" text="Button Primary" />
             <Button classNumType="button-danger" text="Button Danger" />
             <Button classNumType="button-warning" text="Button Warning" />
-            <Button classNumType="button-green" text="Button Green" />
-            <Button classNumType="button-gray" text="Button Gray" />
+            <Button classNumType="button-green" text="Button-Green" />
+            <Button classNumType="button-gray" text="Button-Gray" />
             <br/>
-            <Links href="abc.com"/>
-            <Links href="abc1.com"/>
+            <Links classNumType="link01" href="abc.com" size="large"/>
+            <Links classNumType="link02" href="abc1.com"/>
         </>
     );
 }

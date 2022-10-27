@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
  
 Links.propTypes = {
   classNumType: PropTypes.string,
+
 };
 function Links(props) {
-  const { classNumType } = props;
+  const { classNumType, href } = props;
   return (
     <div className={classNumType}>
-        <a href={props.href}>Đây là link</a>
+        <a href={href}>Đây là link</a>
     </div>
   )
 }

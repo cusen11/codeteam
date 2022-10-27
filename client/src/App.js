@@ -5,14 +5,12 @@ import Parts from './Pages/Parts';
 
 function App() {
   return (
-    <>
-      <Button classNumType="button-primary" text="Button Primary" />
-      <Button classNumType="button-danger" text="Button Danger" />
-      <Button classNumType="button-warning" text="Button Warning" />
-      <br/>
-      <Links href="abc.com"/>
-      <Links href="abc1.com"/>
-    </>
+    <BrowserRouter>   
+      <Routes> 
+        <Route path="/" element={<HomePage/> }/>
+        <Route path="/parts" element={<Parts/> }/> 
+      </Routes>  
+  </BrowserRouter>    
   );
 }
 
