@@ -1,0 +1,31 @@
+.header{ 
+    margin: 0 0 50px 0; 
+    background-color: #3498db;
+    border-bottom: 3px solid #000;
+} 
+.header .logo{ 
+    padding: 4px 6px;
+    border: 1px solid#fff;
+    margin: 5px 0;
+} 
+.header .wrapper{ 
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+.header .nav li a{
+    padding: 5px 10px; 
+    cursor: pointer; 
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    position: relative;
+}
+.header .nav li a:hover{
+    position: relative;
+    left: 2px;
+    transition: all 0.2s;
+}
