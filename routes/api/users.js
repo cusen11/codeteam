@@ -40,7 +40,7 @@ router.post('/registration',[
     try {
         // see if user exists
 
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ username });
         if(user){
             return res.status(400).json({status: false, msg: "User alrealy exists!!!"})
         } 

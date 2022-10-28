@@ -13,6 +13,10 @@ const UsersChema = new mongoose.Schema({
         type: String,
         required: true
     },
+    level:{
+        type:Number,
+        default: 2
+    },
     avatar:{ 
         type: String
     }
