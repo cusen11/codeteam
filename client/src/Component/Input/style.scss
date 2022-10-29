@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    margin-bottom: 20px;
+}
+.form-label {
+    font-size: 16px;
+    width: 160px;
+    flex-shrink: 0;
+}
+.form-control {
+    flex: 1;
+    font-size: 16px;
+    padding: 18px 16px;
+    outline: none;
+    border: 1px solid #dbe0df;
+    transition: 0.4s;
+}
+.form-control:focus {
+    border-color: #000;
+}
+.form-submit {
+    flex: 1;
+    font-size: 16px;
+    padding: 18px 16px;
+    outline: none;
+    border: none;
+    background: #00afab;
+    transition: 0.4s;
+    color: #fff;
+    cursor: pointer;
+}
+.form-submit:hover {
+    opacity: 0.7;
+}
