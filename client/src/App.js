@@ -1,16 +1,19 @@
-import Button from "./Component/Button/Button";
-import Input from "./Component/Input/Input";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './Component/Header/Header';
+import HomePage from './Pages/HomePage';
+import Parts from './Pages/Parts';
+import 'antd/dist/antd.min.css';
+
 
 function App() {
   return (
-    <>
-      <Button classNumType="button-primary" text="Button Primary" />
-      <Button classNumType="button-danger" text="Button Danger" />
-      <Button classNumType="button-warning" text="Button Warning" />
-      <Input labelName="Username" htmlFor="user-name" inputType="text" placeHolder="Username" className="form-control"/>
-      <Input labelName="Password" htmlFor="password" inputType="password" placeHolder="Password" className="form-control"/>
-      <Input inputType="submit" className="form-submit"/>
-    </>
+    <BrowserRouter>
+      <Header/>  
+      <Routes> 
+        <Route path="/" element={<HomePage/> }/>
+        <Route path="/parts" element={<Parts/> }/> 
+      </Routes>  
+  </BrowserRouter>
   );
 }
 
