@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Component/Button/Button';
+import Input from '../Component/Input/Input';
 import Links from '../Component/Links/Links';
 
 function Parts() {
@@ -13,6 +14,9 @@ function Parts() {
             <br/>
             <Links classNumType="link01" href="abc.com" size="large"/>
             <Links classNumType="link02" href="abc1.com"/>
+            <Input labelName="Username" htmlFor="username" placeHolder="Username" className="form-control" />
+            <Input labelName="Password" htmlFor="password" inputType="password" placeHolder="Password" className="form-control" />
+            <Input inputType="submit" className="form-submit" />
         </>
     );
 }
