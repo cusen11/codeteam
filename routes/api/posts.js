@@ -12,7 +12,8 @@ const User = require('../../models/User');
 // access     Private 
 router.post('/add',[auth,
     [
-        check('content', 'Content is required').not().isEmpty(),
+        check('customer','Customer is required').not().isEmpty(),
+        check('content', 'Content is required').not().isEmpty()
     ]
 ], async (req,res) => {
     const errors = validationResult(req);
@@ -24,6 +25,7 @@ router.post('/add',[auth,
     
         const newPost = new Post({
             user: req.user.id,
+            customer: req.body.customer,
             content: req.body.content,
             username: user.username, 
             
