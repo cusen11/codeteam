@@ -1,6 +1,16 @@
 const mongoose = require('mongoose'); 
 
 const UsersChema = new mongoose.Schema({
+    lastname:{
+        type: String,
+        required: true,
+        default:'Thúy',
+    },
+    firstname: {
+        type: String,
+        required: true,
+        default:'Mộng',
+    },
     username:{
         type: String,
         required: true
