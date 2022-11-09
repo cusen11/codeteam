@@ -54,21 +54,21 @@ function Registration() {
                     autoComplete="off"
                 >
                      <Form.Item name="lastname"> 
-                        <Input placeholder='Mặc định tên Thúy'/>
+                        <Input placeholder='First Name ( Default Thúy )'/>
                     </Form.Item>
                     <Form.Item name="firstname"> 
-                        <Input placeholder='Mặc định là Mộng'/>
+                        <Input placeholder='Last Name ( Default Mộng )'/>
                     </Form.Item>
                     <Form.Item 
                     name="username"
                     rules={[
                         {
                         required: true,
-                        message: 'Tên đăng nhập bắt buộc nhập!',
+                        message: 'Please input your username',
                         },
                     ]}
                     > 
-                        <Input placeholder='Tên đăng nhập'/>
+                        <Input placeholder='Username'/>
                     </Form.Item>
 
                     <Form.Item 
@@ -78,7 +78,7 @@ function Registration() {
                         {
                         type: 'email',
                         required: true,
-                        message: 'Mail là trường bắt buộc!',
+                        message: 'Please input your mail!',
                         },
                     ]}
                     > 
@@ -90,7 +90,7 @@ function Registration() {
                     rules={[
                         {
                         required: true,
-                        message: 'Password là trường bắt buộc!',
+                        message: 'Please input your password!',
                         },
                     ]}
                     >
@@ -102,7 +102,7 @@ function Registration() {
                     rules={[
                         {
                         required: true,
-                        message: 'Password là trường bắt buộc!',
+                        message: 'Please input your password!',
                         },
                     ]}
                     >
@@ -111,8 +111,8 @@ function Registration() {
                     <Form.Item >
                     <Button type="primary" htmlType="submit">
                         Đăng ký
-                    </Button>
-                    </Form.Item>
+                    </Button> 
+                    </Form.Item> 
                 </Form>
             </Card>
         </Col>
