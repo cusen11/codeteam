@@ -21,7 +21,6 @@ function HomePage() {
                         <Popover content="Khó tánh" >
                             <FrownOutlined />
                         </Popover>
-
                       ]}
                      > 
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>

@@ -1,7 +1,17 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './style.scss'
 
-export default function Input({labelName, htmlFor, inputType='text', placeHolder, className}) {
+Input.propTypes = {
+  labelName: PropTypes.string,
+  htmlFor: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
+  inputType: PropTypes.string,
+  placeHolder: PropTypes.string,
+  className: PropTypes.string,
+};
+
+function Input({labelName, htmlFor, inputType='text', placeHolder, className='form-input'}) {
   return (
     <div className='form-group'>
         {
@@ -11,3 +21,5 @@ export default function Input({labelName, htmlFor, inputType='text', placeHolder
     </div>
   )
 }
+
+export default Input
