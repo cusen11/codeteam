@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import './style.css'
 
 export default function Input({labelName, htmlFor, inputType='text', placeHolder, className}) {
   return (

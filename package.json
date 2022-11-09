@@ -2,7 +2,7 @@
   "name": "codeteam",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
@@ -24,6 +24,7 @@
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.5.0",
     "config": "^3.3.8",
+    "cors": "^2.8.5",
     "create-react-app": "^5.0.1",
     "express": "^4.18.2",
     "express-validator": "^6.14.2",
