@@ -9,6 +9,7 @@ import setAuthToken from './utils/auth';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Registration from './Component/Registration';
+import Forgotpassword from './Component/Forgotpassword';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={!token.value.status ? <LoginForm/> : <HomePage dataToken={token}/> }/>
         <Route path="/parts" element={<Parts/> }/> 
         <Route path="/registration" element={<Registration/>}/> 
+        <Route path="/forgotpassword" element={<Forgotpassword/>}/> 
       </Routes>  
   </BrowserRouter>
   );

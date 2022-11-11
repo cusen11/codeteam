@@ -15,7 +15,7 @@ export const loginAuthor = async (values ,dispatch) =>{
             GetInfoLoginUser(res.data.token,dispatch)  
         })
     } catch (err) { 
-        alert(err.response.data.mgs)
+        alert(err.response.data.msg) 
     } 
 } 
 
@@ -34,7 +34,7 @@ export const GetInfoLoginUser = async (token,dispatch) => {
         })
        
     } catch (err) {
-        console.log(err.response.data.mgs)
+        console.log(err.response.data.msg)
     }  
 }
 
