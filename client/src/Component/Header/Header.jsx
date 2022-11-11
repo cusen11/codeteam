@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DingtalkOutlined, PoweroffOutlined } from '@ant-design/icons';
-import './Header.css';
-import { Button } from 'antd';
+import './Header.css'; 
 
 import { logout } from '../../reducers/Login';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,15 +17,15 @@ function Header() {
                 <ul className='nav'>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/parts'>Part</Link></li> 
-                    <li>
+                    
                         {
-                            status ? <Button style={{width: '100%'}} 
-                            type='primary' 
-                            danger onClick={() => dispatch(logout())} 
-                            icon={<PoweroffOutlined />}
-                        /> : '' 
+                            status ?  
+                            <li
+                            onClick={() => dispatch(logout())} > 
+                            <Link><PoweroffOutlined /></Link></li>
+                        : '' 
                         }
-                    </li>
+                    
                 </ul>
             </div>
         </header>

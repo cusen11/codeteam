@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'; 
-import { Col, Row, Pagination, Card, Popover } from 'antd'; 
+import { Col, Row, Pagination, Card, Popover, Button, Modal } from 'antd'; 
 import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined, CommentOutlined } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,10 +19,23 @@ function HomePage() {
     const PaginationChange =  (pagePagination) =>{
         setPage(pagePagination) 
     }  
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+      setIsModalOpen(true);
+    }; 
+      const handleCancel = () => {
+        setIsModalOpen(false);
+      };
     return (
         <Row className='wrapper'> 
-            <CreatePost dataToken={token} limit={limit}/>
-             
+            <Modal title="Thêm mới khách hàng thân yêu" open={isModalOpen} footer={null} onCancel={handleCancel}>
+                <CreatePost dataToken={token} limit={limit}/>
+            </Modal>
+            
+             <Row style={{width:'100%'}} justify="end" align='middle'>
+                <Col style={{textAlign:'right',padding:'18px'}}><Button type='primary' onClick={showModal}>Tạo thêm nghiệp</Button></Col> 
+             </Row>
             <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
                 {
                     posts.results.map(post => (

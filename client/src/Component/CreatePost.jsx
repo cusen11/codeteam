@@ -17,13 +17,16 @@ function CreatePost({dataToken,limit}) {
     return (
         <> 
             <Form name="basic" form={form} onFinish={onFinish} style={{marginBottom: '80px'}}>  
-                    <Row justify='end' wrap='wrap' gutter={[0, 8]}>
+                    <Row justify='end' wrap='wrap' gutter={[8, 8]}>
                         <Col md={24} xs={24}>
                             <Form.Item name="customer" style={{margin: '0'}}>
                                 <Input placeholder='Customer'/>
                             </Form.Item> 
+                           
+                        </Col>
+                        <Col md={24} xs={24}> 
                             <Form.Item name="content" style={{margin: '0'}}>
-                                <TextArea autoSize={{ minRows: 2, maxRows: 6 }} placeholder={`Content`}/>
+                                <TextArea autoSize={{ minRows: 5, maxRows: 10 }} placeholder={`Content`}/>
                             </Form.Item> 
                         </Col>
                         <Col>
