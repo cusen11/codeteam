@@ -9,6 +9,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   // Kiểu text không bắt buộc phải có
   classNumType: PropTypes.string,
+  size: PropTypes.string,
 };
 // props là dử liệu được lấy từ component cha khi gọi nó vào
 // VD : <Button classNumType="button-primary" text="Button Primary" /> (1)
@@ -16,10 +17,10 @@ Button.propTypes = {
 function Button(props) {
   // đây là cách khai các thành phần bên trong của props ra ngoài.
   // props gọi nôm na là cái cục chứa mấy cái biến mà component cha truyền xuống
-  const { text, classNumType } = props;
+  const { text, classNumType, size } = props;
   return (
     // truyền dữ liệu vừa gọi trên props
-    <button className={classNumType}>{text}</button>
+    <button className={`${classNumType} ${size}`}>{text}</button>
   );
 }
 //export thế này thì bên ngoài gọi nó ra bằng cách <Button /> là ra gióng như (1).

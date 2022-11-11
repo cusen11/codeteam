@@ -63,6 +63,12 @@
   background: #fff;
   color: #6c757d;
 }
+.small{
+  width: 150px!important;
+}
+.large{
+  width: 300px!important;
+}
 a{
   text-decoration: none;
 }
