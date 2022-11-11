@@ -20,29 +20,63 @@ function HomePage() {
         setPage(pagePagination) 
     }  
     return (
-        <Row className='wrapper'> 
-            <CreatePost dataToken={token} limit={limit}/>
-             
-            <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
-                {
-                    posts.results.map(post => (
-                        <Col key={post._id} className='card' span={6}>
-                            <Card
-                            extra={<Popover content={`Người đăng: ${post.user.username}`}><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                            title={post.customer}                             
-                            actions={[
-                                <Popover content="Bình luận">
-                                   <CommentOutlined />
-                                </Popover>,
-                                <Popover content="Dễ chịu">
-                                    <HeartOutlined />
-                                </Popover>,
-                                <Popover content="Bình thường">
-                                    <MehOutlined />
-                                </Popover>,
-                                <Popover content="Khó tánh" >
-                                    <FrownOutlined />
-                                </Popover>
+        <Row className='wrapper'>
+            <Title level={2}>Hello TeamCode</Title>
+            <Row align='top' justify='space-between' style={{width:'100%',marginBottom:'50px'}} gutter={[16, 16]}>
+                <Col className='card' span={6}>
+                     <Card
+                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
+                     title="Tên Khách Hàng"
+                     actions={[
+                        <Popover content="Dễ chịu">
+                            <HeartOutlined />
+                        </Popover>,
+                        <Popover content="Bình thường">
+                            <MehOutlined />
+                        </Popover>,
+                        <Popover content="Khó tánh" >
+                            <FrownOutlined />
+                        </Popover>
+
+                      ]}
+                     > 
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
+                     </Card>
+                </Col> 
+                <Col className='card' span={6}>
+                     <Card
+                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
+                     title="Tên Khách Hàng"
+                     actions={[
+                        <Popover content="Dễ chịu">
+                            <HeartOutlined />
+                        </Popover>,
+                        <Popover content="Bình thường">
+                            <MehOutlined />
+                        </Popover>,
+                        <Popover content="Khó tánh" >
+                            <FrownOutlined />
+                        </Popover>
+
+                      ]}
+                     > 
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
+                     </Card>
+                </Col>
+                <Col className='card' span={6}>
+                     <Card
+                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
+                     title="Tên Khách Hàng"
+                     actions={[
+                        <Popover content="Dễ chịu">
+                            <HeartOutlined />
+                        </Popover>,
+                        <Popover content="Bình thường">
+                            <MehOutlined />
+                        </Popover>,
+                        <Popover content="Khó tánh" >
+                            <FrownOutlined />
+                        </Popover>
 
                             ]}
                             >  
