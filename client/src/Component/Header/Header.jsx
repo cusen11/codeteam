@@ -5,22 +5,28 @@ import './Header.css';
 import { Button } from 'antd';
 
 import { logout } from '../../reducers/Login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Header() {
     const dispatch = useDispatch();  
+    const token = useSelector(state => state?.login)   
+    const status = token.value.status
     return (
         <header className='header'>
             <div className="wrapper">
                 <div><Link to='/' className='logo'><DingtalkOutlined style={{color: "#fff",fontSize:"40px"}} /></Link></div>
                 <ul className='nav'>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/parts'>Part</Link></li>
-                    <li><Button style={{width: '100%'}} 
-                        type='primary' 
-                        danger onClick={() => dispatch(logout())} 
-                        icon={<PoweroffOutlined />}
-                    /></li>
+                    <li><Link to='/parts'>Part</Link></li> 
+                    <li>
+                        {
+                            status ? <Button style={{width: '100%'}} 
+                            type='primary' 
+                            danger onClick={() => dispatch(logout())} 
+                            icon={<PoweroffOutlined />}
+                        /> : '' 
+                        }
+                    </li>
                 </ul>
             </div>
         </header>

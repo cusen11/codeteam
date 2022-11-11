@@ -26,8 +26,7 @@ router.post('/add',[auth,
         const newPost = new Post({
             user: req.user.id,
             customer: req.body.customer,
-            content: req.body.content,
-            username: user.username, 
+            content: req.body.content
             
         })
 

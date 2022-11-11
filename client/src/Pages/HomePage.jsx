@@ -1,256 +1,60 @@
-import React from 'react'; 
-import { Col, Row, Typography, Pagination, Card, Popover } from 'antd'; 
-import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined } from '@ant-design/icons'  
+import React, { useEffect } from 'react'; 
+import { Col, Row, Pagination, Card, Popover } from 'antd'; 
+import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined, CommentOutlined } from '@ant-design/icons'  
+import CreatePost from '../Component/CreatePost';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { GetAllPostPagination } from '../Action/posts';
 function HomePage() {
-    const { Title } = Typography
+    const dispatch = useDispatch() 
+    const token = useSelector(state => state?.login)  
+    const tokenKey = token.value.request_token.token
+    const [page ,setPage] = useState(1)
+    const limit = 12
+    useEffect(()=>{
+        GetAllPostPagination(tokenKey, dispatch,page,limit)
+    },[page,limit,tokenKey,dispatch]) 
+    
+    const posts = useSelector(state => state?.posts.value)
+    const PaginationChange =  (pagePagination) =>{
+        setPage(pagePagination) 
+    }  
     return (
-        <Row className='wrapper'>
-            <Title level={2}>Hello TeamCode</Title>
-            <Row align='top' justify='space-between' style={{width:'100%',marginBottom:'50px'}} gutter={[16, 16]}>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
+        <Row className='wrapper'> 
+            <CreatePost dataToken={token} limit={limit}/>
+             
+            <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
+                {
+                    posts.results.map(post => (
+                        <Col key={post._id} className='card' span={6}>
+                            <Card
+                            extra={<Popover content={`Người đăng: ${post.user.username}`}><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
+                            title={post.customer}                             
+                            actions={[
+                                <Popover content="Bình luận">
+                                   <CommentOutlined />
+                                </Popover>,
+                                <Popover content="Dễ chịu">
+                                    <HeartOutlined />
+                                </Popover>,
+                                <Popover content="Bình thường">
+                                    <MehOutlined />
+                                </Popover>,
+                                <Popover content="Khó tánh" >
+                                    <FrownOutlined />
+                                </Popover>
 
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col> 
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex? </p> 
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                <Col className='card' span={6}>
-                     <Card
-                     extra={<Popover content="Xem thêm"><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
-                     title="Tên Khách Hàng"
-                     actions={[
-                        <Popover content="Dễ chịu">
-                            <HeartOutlined />
-                        </Popover>,
-                        <Popover content="Bình thường">
-                            <MehOutlined />
-                        </Popover>,
-                        <Popover content="Khó tánh" >
-                            <FrownOutlined />
-                        </Popover>
-
-                      ]}
-                     > 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex?</p>
-                     </Card>
-                </Col>
-                
+                            ]}
+                            >  
+                                <p>{post.content}</p>
+                            </Card>
+                        </Col> 
+                    ))
+                } 
             </Row> 
-            <Pagination defaultCurrent={1} total={50} />
+            {
+                posts.totalPage > 1 ? <Pagination onChange={PaginationChange} total={posts.totalItem} pageSize={limit} /> : ''
+            }
         </Row>
     );
 }
