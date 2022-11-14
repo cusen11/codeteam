@@ -202,7 +202,7 @@ router.put('/angry/:post_id',auth, async(req,res)=>{
         
         //check the post has already angry
         if(post.angrys.filter(angry => angry.user.toString() === req.user.id).length > 0)
-            return res.status(404).json({ msg: "Post already angryd" })
+            return res.status(404).json({ msg: "Post already angry" })
         
         post.angrys.unshift({ user: req.user.id })
 

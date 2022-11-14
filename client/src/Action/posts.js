@@ -2,7 +2,7 @@ import axios from "axios";
 import { GetPost,GetPostByUser } from "../reducers/Posts";
 import { error, success } from "./func";
 
-export const LikePostAPI = async (id,token,dispatch,limit) => {   
+export const LikePostAPI = async (id,token,dispatch,limit,page) => {   
     try {
        
         const config = { 
@@ -11,14 +11,14 @@ export const LikePostAPI = async (id,token,dispatch,limit) => {
             } 
         } 
         axios.put(`/api/posts/like/${id}`,config).then(()=>{
-            GetAllPostPagination(token, dispatch,1,limit)
+            GetAllPostPagination(token, dispatch,page,limit)
         });  
         
     } catch (err) {
         console.log(err.respond.data.msg)
     }
 } 
-export const UnLikePostAPI = async (id,token,dispatch,limit) => {   
+export const UnLikePostAPI = async (id,token,dispatch,limit,page) => {   
     try {
         const config = { 
             headers:{ 
@@ -26,12 +26,73 @@ export const UnLikePostAPI = async (id,token,dispatch,limit) => {
             } 
         }
         axios.put(`/api/posts/unlike/${id}`,config).then(()=>{
-            GetAllPostPagination(token, dispatch,1,limit)
+            GetAllPostPagination(token, dispatch,page,limit)
         });   
     } catch (err) {
         console.log(err.respond.data.msg)
     }
 } 
+export const AngryPostAPI = async (id,token,dispatch,limit,page) => {   
+    console.log({id,token,dispatch,limit,page})
+    try {
+       
+        const config = { 
+            headers:{ 
+                'x-auth-token': token
+            } 
+        } 
+        axios.put(`/api/posts/angry/${id}`,config).then(()=>{ 
+            GetAllPostPagination(token, dispatch,page,limit)
+        });  
+        
+    } catch (err) {
+        console.log(err.respond.data.msg)
+    }
+} 
+export const UnAngryPostAPI = async (id,token,dispatch,limit,page) => {   
+    try {
+        const config = { 
+            headers:{ 
+                'x-auth-token': token
+            } 
+        }
+        axios.put(`/api/posts/unangry/${id}`,config).then(()=>{
+            GetAllPostPagination(token, dispatch,page,limit)
+        });   
+    } catch (err) {
+        console.log(err.respond.data.msg)
+    }
+}
+export const NormalPostAPI = async (id,token,dispatch,limit,page) => {   
+    try {
+       
+        const config = { 
+            headers:{ 
+                'x-auth-token': token
+            } 
+        } 
+        axios.put(`/api/posts/normal/${id}`,config).then(()=>{
+            GetAllPostPagination(token, dispatch,page,limit)
+        });  
+        
+    } catch (err) {
+        console.log(err.respond.data.msg)
+    }
+} 
+export const UnnormalPostAPI = async (id,token,dispatch,limit,page) => {   
+    try {
+        const config = { 
+            headers:{ 
+                'x-auth-token': token
+            } 
+        }
+        axios.put(`/api/posts/unnormal/${id}`,config).then(()=>{
+            GetAllPostPagination(token, dispatch,page,limit)
+        });   
+    } catch (err) {
+        console.log(err.respond.data.msg)
+    }
+}
 export const GetAllPost = async(token,dispatch) =>{   
     try {
         const config = { 
@@ -146,7 +207,8 @@ export const removeComment = async(token,postId,id,dispatch,dashboard,limit) =>{
         } 
 } 
 
-export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{
+export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{ 
+    
     try {
         const config = {
             headers:{
@@ -161,6 +223,7 @@ export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{
         }
         const res = await axios.post('/api/posts/page',body,config); 
         dispatch(GetPost(res.data)) 
+        console.log(res.data)
     } catch (err) {
         error(err.response.data.msg)
     } 

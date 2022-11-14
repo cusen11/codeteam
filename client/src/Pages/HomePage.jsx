@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'; 
 import { Col, Row, Pagination, Card, Popover, Button, Modal } from 'antd'; 
-import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined, CommentOutlined, EditOutlined } from '@ant-design/icons'  
+import { EyeOutlined, EditOutlined } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { GetAllPostPagination } from '../Action/posts'; 
-import { formatDAY } from '../Action/func'; 
+import { formatDAY } from '../Action/func';  
+import LikePost from '../Component/LikePost'; 
 function HomePage() {
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
@@ -58,20 +59,10 @@ function HomePage() {
                                 </div>
                             }
                             title={post.customer}                             
-                            actions={[
-                                <Popover content="Bình luận">
-                                   <CommentOutlined />
-                                </Popover>,
-                                <Popover content="Dễ chịu">
-                                    <HeartOutlined />
-                                </Popover>,
-                                <Popover content="Bình thường">
-                                    <MehOutlined />
-                                </Popover>,
-                                <Popover content="Khó tánh" >
-                                    <FrownOutlined />
-                                </Popover>
-
+                            actions={[<>
+                                <LikePost data={post} token={tokenKey} page={page} limit={limit}/>
+                                {/* <Angry data={post} token={tokenKey} page={page} limit={limit}/> */}
+                                </>
                             ]}
                             >  
                                 <div  dangerouslySetInnerHTML={{__html: post.content}}></div>
