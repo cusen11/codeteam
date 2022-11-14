@@ -1,6 +1,6 @@
 import { message } from "antd";
 
-export const formatDAY = (date) =>{  
+export const formatDAYbyCurrentDay = (date) =>{  
     let AllDay = new Date(date); 
     let minute = AllDay.getMinutes();
     let hours = AllDay.getUTCHours();
@@ -36,6 +36,17 @@ export const formatDAY = (date) =>{
         return dayResult;
     } 
 }
+
+export const formatDAY = (date) =>{  
+    let AllDay = new Date(date);  
+    let days = AllDay.getUTCDate();
+    let month = AllDay.getUTCMonth() + 1; 
+    let year = AllDay.getUTCFullYear();  
+     
+    let dayResult = days + '/' + month + '/' + year ;
+    
+        return dayResult;
+} 
 
 export const formatDDMMYY = (date) =>{
     let AllDay = new Date(date);   

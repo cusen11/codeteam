@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'; 
 import { Col, Row, Pagination, Card, Popover, Button, Modal } from 'antd'; 
-import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined, CommentOutlined } from '@ant-design/icons'  
+import { FrownOutlined, MehOutlined, HeartOutlined, EyeOutlined, CommentOutlined, EditOutlined } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { GetAllPostPagination } from '../Action/posts';
+import { GetAllPostPagination } from '../Action/posts'; 
+import { formatDAY } from '../Action/func'; 
 function HomePage() {
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
     const tokenKey = token.value.request_token.token
     const [page ,setPage] = useState(1)
-    const limit = 12
+    const limit = 9
     useEffect(()=>{
         GetAllPostPagination(tokenKey, dispatch,page,limit)
     },[page,limit,tokenKey,dispatch]) 
@@ -26,22 +27,36 @@ function HomePage() {
     }; 
       const handleCancel = () => {
         setIsModalOpen(false);
-      };
+      }; 
     return (
         <Row className='wrapper'> 
-            <Modal title="Thêm mới khách hàng thân yêu" open={isModalOpen} footer={null} onCancel={handleCancel}>
+            <Modal title="Thêm mới" width={'60%'} open={isModalOpen} footer={null} onCancel={handleCancel}>
                 <CreatePost dataToken={token} limit={limit}/>
-            </Modal>
-            
+            </Modal> 
              <Row style={{width:'100%'}} justify="end" align='middle'>
-                <Col style={{textAlign:'right',padding:'18px'}}><Button type='primary' onClick={showModal}>Tạo thêm nghiệp</Button></Col> 
+                <Col style={{textAlign:'right',padding:'18px'}}><Button type='primary' onClick={showModal}>Thêm dự án</Button></Col> 
              </Row>
             <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
                 {
                     posts.results.map(post => (
-                        <Col key={post._id} className='card' span={6}>
+                        <Col key={post._id} className='card' span={8}>
                             <Card
-                            extra={<Popover content={`Người đăng: ${post.user.username}`}><EyeOutlined style={{cursor:'pointer', fontSize:'18px'}} /></Popover>}
+                            extra={
+                                <div>
+                                    <Popover 
+                                        content={
+                                        <div>
+                                            <p><b>By: </b>{post.user.username}</p>
+                                            <p><b>Date:</b> {formatDAY(post.createdAt)}</p>
+                                        </div>}>
+                                        <EyeOutlined style={{cursor:'pointer', fontSize:'18px',marginRight: '5px'}} /> 
+                                    </Popover>
+                                    <Popover 
+                                        content='Edit'> 
+                                        <EditOutlined style={{cursor:'pointer', fontSize:'18px'}}/>
+                                    </Popover>
+                                </div>
+                            }
                             title={post.customer}                             
                             actions={[
                                 <Popover content="Bình luận">
@@ -59,14 +74,14 @@ function HomePage() {
 
                             ]}
                             >  
-                                <p>{post.content}</p>
+                                <div  dangerouslySetInnerHTML={{__html: post.content}}></div>
                             </Card>
                         </Col> 
                     ))
                 } 
             </Row> 
             {
-                posts.totalPage > 1 ? <Pagination onChange={PaginationChange} total={posts.totalItem} pageSize={limit} /> : ''
+                posts.totalPage > 1 ? <Pagination style={{marginTop:50,width:'100%',textAlign:'center'}} onChange={PaginationChange} total={posts.totalItem} pageSize={limit} /> : ''
             }
         </Row>
     );

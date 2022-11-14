@@ -26,4 +26,8 @@ li,a{
 } 
 .ant-card-body{ 
   min-height: 150px;  
+  overflow-y: scroll;
+}
+.ql-editor{
+  min-height: 300px;
 }

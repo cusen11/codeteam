@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Registration from './Component/Registration';
 import Forgotpassword from './Component/Forgotpassword';
+import Footer from './Component/Footer';
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         <Route path="/parts" element={<Parts/> }/> 
         <Route path="/registration" element={<Registration/>}/> 
         <Route path="/forgotpassword" element={<Forgotpassword/>}/> 
-      </Routes>  
+      </Routes> 
+      <Footer/> 
   </BrowserRouter>
   );
 }

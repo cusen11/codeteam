@@ -1,8 +1,10 @@
-import { Button, Col, Form, Input, Row } from 'antd';
-import TextArea from 'antd/lib/input/TextArea';
-import React from 'react'; 
+import { Button, Col, Form, Input, Row } from 'antd'; 
+import React, { useState } from 'react'; 
 import { useDispatch } from 'react-redux';
-import { CreatePostAPI } from '../Action/posts';
+import { CreatePostAPI } from '../Action/posts'; 
+
+import ReactQuill from 'react-quill'; 
+import 'react-quill/dist/quill.snow.css';
 
 function CreatePost({dataToken,limit}) {  
     const token = dataToken.value.request_token.token  
@@ -10,27 +12,52 @@ function CreatePost({dataToken,limit}) {
     const dispatch = useDispatch()
     const [form] = Form.useForm();
     const onFinish = (values) => {
-        CreatePostAPI(values,token,dispatch,limit)   
+        const newValue = {
+            customer: values.customer,
+            content: value
+        } 
+        CreatePostAPI(newValue,token,dispatch,limit)   
         form.resetFields();   
 
     };
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link'],
+          ['clean']
+        ],
+      }
+    
+    const  formats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link'
+      ] 
+    const [value, setValue] = useState('');  
     return (
         <> 
-            <Form name="basic" form={form} onFinish={onFinish} style={{marginBottom: '80px'}}>  
+            <Form name="basic" form={form} onFinish={onFinish}>  
                     <Row justify='end' wrap='wrap' gutter={[8, 8]}>
                         <Col md={24} xs={24}>
                             <Form.Item name="customer" style={{margin: '0'}}>
                                 <Input placeholder='Customer'/>
                             </Form.Item> 
                            
-                        </Col>
+                        </Col> 
                         <Col md={24} xs={24}> 
-                            <Form.Item name="content" style={{margin: '0'}}>
-                                <TextArea autoSize={{ minRows: 5, maxRows: 10 }} placeholder={`Content`}/>
-                            </Form.Item> 
+                        <ReactQuill 
+                            theme="snow" 
+                            value={value} 
+                            onChange={setValue} 
+                            modules={modules}
+                            formats={formats}
+                        /> 
                         </Col>
                         <Col>
-                            <Button type='primary' size='default' htmlType="submit">Đăng</Button>
+                            <Button type='primary' size='default' htmlType="submit">Thêm</Button>
                         </Col>
                     </Row>
             </Form>
