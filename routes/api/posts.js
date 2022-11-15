@@ -54,7 +54,7 @@ router.get('/',auth,async(req,res)=>{
 
 })
 
-// @router    POST api/posts
+// @router    POST api/posts/page
 // desc       Get post Pagination
 // access     Private 
 
@@ -66,6 +66,24 @@ router.post('/page',auth, async(req,res)=>{
         const total = await Post.countDocuments({})
         const posts = await Post.find({}).populate('user',['username']).limit(parseInt(limit)).skip(limit*pageNum).sort({ createdAt : -1 });
         res.status(200).json({currentPage:page, results: posts,totalItem:total, totalPage:Math.ceil(total/limit)})
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error!!!')
+    }  
+})
+// @router    POST api/posts/search/customer
+// desc       Get post Pagination on Search
+// access     Private 
+
+router.post('/search/:key',auth, async(req,res)=>{
+    const { key } = req.params   
+    try { 
+        const posts = await Post.find({
+            "$or":[
+                {customer:{$regex:key}}
+            ]
+        });
+        res.status(200).json(posts)
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error!!!')
@@ -111,6 +129,7 @@ router.get('/dashboard/user/posts',auth,async(req,res)=>{
     }
 
 })
+
 
 // @router    DELETE api/posts/:post_id
 // desc       Delete Post ID

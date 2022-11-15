@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'; 
-import { Col, Row, Pagination, Card, Popover, Button, Modal } from 'antd'; 
+import { Col, Row, Pagination, Card, Popover, Button, Modal,Input } from 'antd'; 
 import { HeartFilled } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { GetAllPostPagination } from '../Action/posts'; 
+import { GetAllPostPagination, SearchPostAPI } from '../Action/posts'; 
 import { ColorType } from '../Action/func';  
 import LikePost from '../Component/LikePost'; 
 import AngryPost from '../Component/AngryPost';
 import NormalPost from '../Component/NormalPost';
-import CommentPost from '../Component/CommentPost';
+import CommentPost from '../Component/CommentPost'; 
 function HomePage() {
+    const { Search } = Input;
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
     const tokenKey = token.value.request_token.token
@@ -31,15 +32,33 @@ function HomePage() {
     }; 
       const handleCancel = () => {
         setIsModalOpen(false);
-      }; 
+    }; 
+    const onSearch = (value) => {
+        SearchPostAPI(value,tokenKey, dispatch,page,limit) 
+    }
     return (
         <Row className='wrapper'> 
+             
             <Modal title="Thêm mới" width={'60%'} open={isModalOpen} footer={null} onCancel={handleCancel}>
                 <CreatePost dataToken={token} limit={limit}/>
             </Modal> 
+            
              <Row style={{width:'100%'}} justify="end" align='middle'>
-                <Col style={{textAlign:'right',padding:'18px'}}><Button type='primary' onClick={showModal}>Thêm dự án</Button></Col> 
+               
+                <Col style={{textAlign:'right',padding:'18px'}}> 
+                    <Search
+                    placeholder="input search text"
+                    allowClear
+                    enterButton="Search"
+                    size='middle'
+                    onSearch={onSearch}
+                    />
+                </Col> 
+                <Col style={{textAlign:'right',paddingRight:'18px'}}>
+                    <Button type='primary' size='lagre' onClick={showModal}>Thêm dự án</Button> 
+                </Col> 
              </Row>
+            
             <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
                 {
                     posts.results.map(post => (

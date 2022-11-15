@@ -221,8 +221,7 @@ export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{
             limit 
         }
         const res = await axios.post('/api/posts/page',body,config); 
-        dispatch(GetPost(res.data)) 
-        console.log(res.data)
+        dispatch(GetPost(res.data))  
     } catch (err) {
         error(err.response.data.msg)
     } 
@@ -242,4 +241,8 @@ export const removePostById = async(token, id, dispatch) => {
     } catch (err) {
         error(err.response.data.msg)
     }
+}
+
+export const SearchPostAPI = (value, tokenKey, dispatch,page,limit) => {
+    console.log(value, tokenKey, dispatch,page,limit)
 }
