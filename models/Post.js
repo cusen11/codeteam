@@ -47,6 +47,12 @@ const PostSchema = new mongoose.Schema({
             text:{
                 type:String
             },
+            lastname:{
+                type: String, 
+            },
+            firstname: {
+                type: String, 
+            },
             username:{
                 type:String
             },

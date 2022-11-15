@@ -337,7 +337,9 @@ router.put('/comment/:post_id', [auth,
         const newComment = {
             text: req.body.text,
             username: user.username,
-            user: req.user.id
+            user: req.user.id,
+            lastname: user.lastname,
+            firstname: user.firstname
         } 
 
         await post.comment.unshift(newComment)

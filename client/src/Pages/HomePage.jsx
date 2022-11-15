@@ -79,9 +79,9 @@ function HomePage() {
                             actions={[<> 
                                         <LikePost data={post} token={tokenKey} page={page} limit={limit}/>
                                         <AngryPost data={post} token={tokenKey} page={page} limit={limit}/>
-                                        <NormalPost data={post} token={tokenKey} page={page} limit={limit}/>
-                                        <CommentPost data={post.comment} token={tokenKey} limit={limit} id={post._id} dashboard={false}/>
+                                        <NormalPost data={post} token={tokenKey} page={page} limit={limit}/> 
                                         <DeletePost data={post} token={tokenKey} page={page} limit={limit}/>
+                                        <CommentPost data={post.comment} token={tokenKey} limit={limit} id={post._id} dashboard={false}/>
                                     </>
                             ]}
                             >  

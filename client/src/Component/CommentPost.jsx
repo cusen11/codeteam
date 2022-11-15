@@ -21,11 +21,9 @@ function CommentPost({data,token,id,dashboard,limit}) {
         form.resetFields();  
         AddComment(token, values,id, dispatch,dashboard,limit)
     };
-    
     useEffect(()=>{
         setDataComment(PaginationArray(data,paginationSize,1))  
-    },[paginationSize,data])
-    
+    },[paginationSize,data]) 
     return (
         <>
             <Button 
@@ -54,8 +52,8 @@ function CommentPost({data,token,id,dashboard,limit}) {
                         dataComment?.map(cmt => ( 
                             <Comment key={cmt._id}
                             className='box'
-                            author={`${cmt.username} | ${formatDAY(cmt.date)}`}
-                            avatar={<Avatar src={cmt.avatar} alt={cmt.username}/>}
+                            author={`${cmt.firstname +" "+ cmt.lastname} | ${formatDAY(cmt.date)}`}
+                            avatar={<Avatar src={cmt.avatar} alt={cmt.fistname +" "+ cmt.lastname}/>}
                             content={
                                 <Typography>
                                     {cmt.text}
