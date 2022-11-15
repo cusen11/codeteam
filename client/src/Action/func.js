@@ -64,4 +64,29 @@ export  const error = (content) => {
 export  const warning = (content) => {
     message.warning(content);
 };
+
+export const ColorType = (post) =>{
+    const { likes, angrys, normals } = post 
+    const array = {likes, angrys, normals} 
+    
+    let max = 0
+    let reslut = '#2ecc71' ; 
+    if(array.angrys.length > max ){
+        max = array.angrys.length
+        reslut = '#c0392b' 
+    } 
+    if(array.likes.length > max ){
+        
+            max = array.likes.length
+            reslut = 'rgb(24, 144, 255)' 
+    }
+    if(array.normals.length > max ){
+        max = array.normals.length
+        reslut = '#2ecc71' 
+    }
+       
+
+     
+    return reslut
+}
  

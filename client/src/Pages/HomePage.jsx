@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'; 
 import { Col, Row, Pagination, Card, Popover, Button, Modal } from 'antd'; 
-import { EyeOutlined, EditOutlined } from '@ant-design/icons'  
+import { HeartFilled } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { GetAllPostPagination } from '../Action/posts'; 
-import { formatDAY } from '../Action/func';  
+import { ColorType } from '../Action/func';  
 import LikePost from '../Component/LikePost'; 
+import AngryPost from '../Component/AngryPost';
+import NormalPost from '../Component/NormalPost';
+import CommentPost from '../Component/CommentPost';
 function HomePage() {
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
@@ -40,29 +43,21 @@ function HomePage() {
             <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
                 {
                     posts.results.map(post => (
-                        <Col key={post._id} className='card' span={8}>
-                            <Card
-                            extra={
-                                <div>
+                        <Col key={post._id} className='card' span={24}>
+                            <Card  
+                            extra={ 
                                     <Popover 
-                                        content={
-                                        <div>
-                                            <p><b>By: </b>{post.user.username}</p>
-                                            <p><b>Date:</b> {formatDAY(post.createdAt)}</p>
-                                        </div>}>
-                                        <EyeOutlined style={{cursor:'pointer', fontSize:'18px',marginRight: '5px'}} /> 
-                                    </Popover>
-                                    <Popover 
-                                        content='Edit'> 
-                                        <EditOutlined style={{cursor:'pointer', fontSize:'18px'}}/>
-                                    </Popover>
-                                </div>
+                                        content='Type'> 
+                                        <HeartFilled style={{color: ColorType(post), marginRight:'5px'}}/>
+                                    </Popover> 
                             }
                             title={post.customer}                             
-                            actions={[<>
-                                <LikePost data={post} token={tokenKey} page={page} limit={limit}/>
-                                {/* <Angry data={post} token={tokenKey} page={page} limit={limit}/> */}
-                                </>
+                            actions={[<> 
+                                        <LikePost data={post} token={tokenKey} page={page} limit={limit}/>
+                                        <AngryPost data={post} token={tokenKey} page={page} limit={limit}/>
+                                        <NormalPost data={post} token={tokenKey} page={page} limit={limit}/>
+                                        <CommentPost data={post.comment} token={tokenKey} limit={limit} id={post._id} dashboard={false}/>
+                                    </>
                             ]}
                             >  
                                 <div  dangerouslySetInnerHTML={{__html: post.content}}></div>

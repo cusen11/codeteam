@@ -32,8 +32,7 @@ export const UnLikePostAPI = async (id,token,dispatch,limit,page) => {
         console.log(err.respond.data.msg)
     }
 } 
-export const AngryPostAPI = async (id,token,dispatch,limit,page) => {   
-    console.log({id,token,dispatch,limit,page})
+export const AngryPostAPI = async (id,token,dispatch,limit,page) => {    
     try {
        
         const config = { 
@@ -42,7 +41,7 @@ export const AngryPostAPI = async (id,token,dispatch,limit,page) => {
             } 
         } 
         axios.put(`/api/posts/angry/${id}`,config).then(()=>{ 
-            GetAllPostPagination(token, dispatch,page,limit)
+            GetAllPostPagination(token, dispatch,page,limit) 
         });  
         
     } catch (err) {
@@ -79,7 +78,7 @@ export const NormalPostAPI = async (id,token,dispatch,limit,page) => {
         console.log(err.respond.data.msg)
     }
 } 
-export const UnnormalPostAPI = async (id,token,dispatch,limit,page) => {   
+export const UnNormalPostAPI = async (id,token,dispatch,limit,page) => {   
     try {
         const config = { 
             headers:{ 

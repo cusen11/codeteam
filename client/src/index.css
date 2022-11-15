@@ -31,3 +31,29 @@ li,a{
 .ql-editor{
   min-height: 300px;
 }
+.ant-typography{
+  text-align: left; 
+}
+.closeCmt{
+  right: 0;
+  position: absolute;
+  top: 5px;
+}
+.box .ant-comment-inner {
+  display: flex;
+  padding: 5px 10px;
+  background: #d1d1d1;
+  margin-bottom: 5px;
+}
+.card .ant-card-actions>li{
+  text-align: left;
+}
+.ant-card-actions .ant-row{
+  padding: 0 10px;
+}
+.ant-card-actions form .ant-row{
+  padding: 0 0;
+}
+.ant-card-actions form input{
+  width: 100%;
+}
