@@ -57,3 +57,6 @@ li,a{
 .ant-card-actions form input{
   width: 100%;
 }
+body{
+  background-color: #ddd !important;
+}

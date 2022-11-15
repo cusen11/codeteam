@@ -17,7 +17,8 @@ function CreatePost({dataToken,limit}) {
             content: value
         } 
         CreatePostAPI(newValue,token,dispatch,limit)   
-        form.resetFields();   
+        form.resetFields();  
+        setValue('') 
 
     };
     const modules = {
@@ -43,7 +44,7 @@ function CreatePost({dataToken,limit}) {
                     <Row justify='end' wrap='wrap' gutter={[8, 8]}>
                         <Col md={24} xs={24}>
                             <Form.Item name="customer" style={{margin: '0'}}>
-                                <Input placeholder='Customer'/>
+                                <Input placeholder='Tên dự án / Tên khách hàng VD: VMN-COD-00011 / Ozawa Biladen'/>
                             </Form.Item> 
                            
                         </Col> 

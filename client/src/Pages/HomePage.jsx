@@ -10,6 +10,7 @@ import LikePost from '../Component/LikePost';
 import AngryPost from '../Component/AngryPost';
 import NormalPost from '../Component/NormalPost';
 import CommentPost from '../Component/CommentPost'; 
+import DeletePost from '../Component/DeletePost';
 function HomePage() { 
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
@@ -80,6 +81,7 @@ function HomePage() {
                                         <AngryPost data={post} token={tokenKey} page={page} limit={limit}/>
                                         <NormalPost data={post} token={tokenKey} page={page} limit={limit}/>
                                         <CommentPost data={post.comment} token={tokenKey} limit={limit} id={post._id} dashboard={false}/>
+                                        <DeletePost data={post} token={tokenKey} page={page} limit={limit}/>
                                     </>
                             ]}
                             >  

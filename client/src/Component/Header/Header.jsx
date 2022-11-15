@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DingtalkOutlined, PoweroffOutlined } from '@ant-design/icons';
+import { PoweroffOutlined } from '@ant-design/icons';
 import './Header.css'; 
+import LOGO from '../../Assets/Images/SEN-LOGO.png';
 
 import { logout } from '../../reducers/Login';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +14,7 @@ function Header() {
     return (
         <header className='header'>
             <div className="wrapper">
-                <div><Link to='/' className='logo'><DingtalkOutlined style={{color: "#fff",fontSize:"40px"}} /></Link></div>
+                <div><Link to='/' className='logo'><img width='55px' src={LOGO} alt="" /></Link></div>
                 <ul className='nav'>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/parts'>Part</Link></li> 

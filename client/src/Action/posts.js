@@ -226,17 +226,19 @@ export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{
         error(err.response.data.msg)
     } 
 }
-export const removePostById = async(token, id, dispatch) => {
+export const removePostById = async(token, id, dispatch,page,limit) => { 
     try {
         const config={
             headers:{
                 'x-auth-token': token
             }
         }
-        if (window.confirm('Bạn có chắc chắn xóa?')){
+        if (window.confirm('Bạn có chắc chắn xóa?')){  
             const res = await axios.delete(`/api/posts/${id}`,config)
-            dispatch(GetPostByUser(res)) 
-        } 
+            GetAllPostPagination(token, dispatch,page,limit)  
+        }
+        
+        
         
     } catch (err) {
         error(err.response.data.msg)
