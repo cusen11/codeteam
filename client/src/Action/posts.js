@@ -243,6 +243,17 @@ export const removePostById = async(token, id, dispatch) => {
     }
 }
 
-export const SearchPostAPI = (value, tokenKey, dispatch,page,limit) => {
-    console.log(value, tokenKey, dispatch,page,limit)
+export const SearchPostAPI = async(value, tokenKey, dispatch,) => { 
+    try {
+        const config = { 
+            headers:{ 
+                'x-auth-token': tokenKey
+            }
+        } 
+        await axios.post(`/api/posts/search/${value}`, config).then(function(res){ 
+            dispatch(GetPost(res.data))  
+        }) 
+    } catch (err) {
+        console.log(err.respond.data.msg)
+    } 
 }

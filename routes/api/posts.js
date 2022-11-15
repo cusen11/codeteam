@@ -71,7 +71,7 @@ router.post('/page',auth, async(req,res)=>{
         res.status(500).send('Server error!!!')
     }  
 })
-// @router    POST api/posts/search/customer
+// @router    POST api/posts/search/:key
 // desc       Get post Pagination on Search
 // access     Private 
 
@@ -82,8 +82,8 @@ router.post('/search/:key',auth, async(req,res)=>{
             "$or":[
                 {customer:{$regex:key}}
             ]
-        });
-        res.status(200).json(posts)
+        }); 
+        res.status(200).json({currentPage:1, results: posts,totalItem:1, totalPage:1})
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error!!!')

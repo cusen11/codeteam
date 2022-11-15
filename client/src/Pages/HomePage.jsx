@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'; 
 import { Col, Row, Pagination, Card, Popover, Button, Modal,Input } from 'antd'; 
-import { HeartFilled } from '@ant-design/icons'  
+import { HeartFilled, SearchOutlined } from '@ant-design/icons'  
 import CreatePost from '../Component/CreatePost';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -10,8 +10,7 @@ import LikePost from '../Component/LikePost';
 import AngryPost from '../Component/AngryPost';
 import NormalPost from '../Component/NormalPost';
 import CommentPost from '../Component/CommentPost'; 
-function HomePage() {
-    const { Search } = Input;
+function HomePage() { 
     const dispatch = useDispatch() 
     const token = useSelector(state => state?.login)  
     const tokenKey = token.value.request_token.token
@@ -32,10 +31,21 @@ function HomePage() {
     }; 
       const handleCancel = () => {
         setIsModalOpen(false);
-    }; 
-    const onSearch = (value) => {
-        SearchPostAPI(value,tokenKey, dispatch,page,limit) 
+    };   
+    const onChange = (e) => {
+        
+        setTimeout(() => {
+            if(e.target.value !== ''){
+                SearchPostAPI(e.target.value,tokenKey, dispatch,1,10000) 
+            }
+            else{
+                GetAllPostPagination(tokenKey, dispatch,page,limit)
+            } 
+           
+        }, 3000);
+
     }
+
     return (
         <Row className='wrapper'> 
              
@@ -45,20 +55,14 @@ function HomePage() {
             
              <Row style={{width:'100%'}} justify="end" align='middle'>
                
-                <Col style={{textAlign:'right',padding:'18px'}}> 
-                    <Search
-                    placeholder="input search text"
-                    allowClear
-                    enterButton="Search"
-                    size='middle'
-                    onSearch={onSearch}
-                    />
+                <Col style={{textAlign:'right',padding:'18px'}}>  
+                    <Input placeholder="Tìm kiếm" onChange={onChange} prefix={<SearchOutlined />} />
                 </Col> 
                 <Col style={{textAlign:'right',paddingRight:'18px'}}>
                     <Button type='primary' size='lagre' onClick={showModal}>Thêm dự án</Button> 
                 </Col> 
              </Row>
-            
+             
             <Row align='top' justify='start' style={{width:'100%'}} gutter={[16, 16]}>
                 {
                     posts.results.map(post => (
@@ -88,6 +92,7 @@ function HomePage() {
             {
                 posts.totalPage > 1 ? <Pagination style={{marginTop:50,width:'100%',textAlign:'center'}} onChange={PaginationChange} total={posts.totalItem} pageSize={limit} /> : ''
             }
+                 
         </Row>
     );
 }
