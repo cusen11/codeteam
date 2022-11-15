@@ -1,6 +1,6 @@
 import axios from "axios"; 
 import { GetPost,GetPostByUser } from "../reducers/Posts";
-import { error, success } from "./func";
+import { error, success, warning } from "./func";
 
 export const LikePostAPI = async (id,token,dispatch,limit,page) => {   
     try {
@@ -226,7 +226,7 @@ export const GetAllPostPagination = async (token,dispatch ,page,limit) =>{
         error(err.response.data.msg)
     } 
 }
-export const removePostById = async(token, id, dispatch,page,limit) => { 
+export const removePostById = async(token, data, dispatch,page,limit) => {  
     try {
         const config={
             headers:{
@@ -234,12 +234,15 @@ export const removePostById = async(token, id, dispatch,page,limit) => {
             }
         }
         if (window.confirm('Bạn có chắc chắn xóa?')){  
-            const res = await axios.delete(`/api/posts/${id}`,config)
-            GetAllPostPagination(token, dispatch,page,limit)  
-        }
-        
-        
-        
+            if(data.user.level !== 1){
+                warning('Chỉ leader mới được phép xóa !!!')
+            }
+            else{
+                const res = await axios.delete(`/api/posts/${data._id}`,config)
+                GetAllPostPagination(token, dispatch,page,limit)  
+            }
+            
+        } 
     } catch (err) {
         error(err.response.data.msg)
     }

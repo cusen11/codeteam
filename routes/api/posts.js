@@ -64,7 +64,7 @@ router.post('/page',auth, async(req,res)=>{
         const { page, limit } = req.body  
         const pageNum = parseInt(page - 1 ) || 0
         const total = await Post.countDocuments({})
-        const posts = await Post.find({}).populate('user',['username']).limit(parseInt(limit)).skip(limit*pageNum).sort({ createdAt : -1 });
+        const posts = await Post.find({}).populate('user',['username','level']).limit(parseInt(limit)).skip(limit*pageNum).sort({ createdAt : -1 });
         res.status(200).json({currentPage:page, results: posts,totalItem:total, totalPage:Math.ceil(total/limit)})
     } catch (err) {
         console.error(err.message);
@@ -116,7 +116,7 @@ router.get('/:post_id',auth,async(req,res)=>{
 // access     Private 
 router.get('/dashboard/user/posts',auth,async(req,res)=>{ 
     try { 
-        const posts = await Post.find({ user: req.user.id }).populate('user',['username']).sort({ createdAt : -1 });   
+        const posts = await Post.find({ user: req.user.id }).populate('user',['username','level']).sort({ createdAt : -1 });   
         if(!posts)
             return res.status(404).json({msg: "Post not found!!!"});
         
@@ -138,12 +138,9 @@ router.get('/dashboard/user/posts',auth,async(req,res)=>{
 router.delete('/:post_id',auth , async(req,res)=>{
 
     try {
-        const post = await Post.findById(req.params.post_id); 
-        if(post.user.toString() !== req.user.id)
-            return res.status(401).json({msg: " User not authorized "});
-
+        const post = await Post.findById(req.params.post_id);   
         await post.remove();
-        const posts = await Post.find({ user: req.user.id }).populate('user',['username']).sort({ createdAt : -1 });   
+        const posts = await Post.find({ user: req.user.id }).populate('user',['username','level']).sort({ createdAt : -1 });   
         res.json(posts)
 
     } catch (err) {

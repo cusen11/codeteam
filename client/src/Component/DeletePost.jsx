@@ -10,7 +10,7 @@ function DeletePost(props) {
     const dispatch = useDispatch()
     return (
         <Popover content="Xóa">
-            <Button onClick={()=>removePostById(token, data._id, dispatch,page,limit)}
+            <Button onClick={()=>removePostById(token, data, dispatch,page,limit)}
                 type="text" 
                 icon={<DeleteOutlined style={{color:'red'}}  />} 
                 size='large'/>
