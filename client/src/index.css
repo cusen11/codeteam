@@ -59,4 +59,7 @@ li,a{
 }
 body{
   background-color: #ddd !important;
+} 
+.card .ant-card-head{
+  padding: 0 8px 0 24px;
 }
