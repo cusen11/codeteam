@@ -238,7 +238,7 @@ export const removePostById = async(token, data, dispatch,page,limit) => {
                 warning('Chỉ leader mới được phép xóa !!!')
             }
             else{
-                const res = await axios.delete(`/api/posts/${data._id}`,config)
+                await axios.delete(`/api/posts/${data._id}`,config)
                 GetAllPostPagination(token, dispatch,page,limit)  
             }
             
