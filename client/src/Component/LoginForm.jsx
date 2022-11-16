@@ -39,7 +39,7 @@ function LoginForm() {
                     },
                 ]}
                 >
-                <Input placeholder=""/>
+                <Input placeholder="username"/>
                 </Form.Item>
 
                 <Form.Item 
