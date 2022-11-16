@@ -73,7 +73,7 @@ export const ColorType = (post) =>{
     let reslut = '#2ecc71' ; 
     if(array.angrys.length > max ){
         max = array.angrys.length
-        reslut = '#c0392b' 
+        reslut = '#c0392b'  
     } 
     if(array.likes.length > max ){
         
