@@ -50,7 +50,9 @@ router.post('/registration',[
             r: 'pg',
             d: 'mm'
         })
-        const newUser = {
+        const newUser = { 
+            lastname,
+            firstname,
             username,
             email,
             password,

@@ -390,4 +390,31 @@ router.delete('/comment/:post_id/:comment_id',auth , async(req,res)=>{
 
 })
 
+// @router    Edit api/posts/edit/:post_id/
+// desc       Edit post
+// access     Private 
+
+router.put('/edit/:post_id', auth,async(req,res)=>{
+    const { post_id } = req.params; 
+    const {customer,content} = req.body
+    const newData = {
+        customer,
+        content
+    }
+    console.log(post_id,newData)
+    try {
+        const post = await Post.findOneAndUpdate(post_id,newData);
+        await post.save()
+        res.status(200).send(post)
+    } catch (error) {
+        console.error(err.message);
+        res.status(500).send('Server error!!!')
+    }
+})
+
+
+
+
+
+
 module.exports = router;
