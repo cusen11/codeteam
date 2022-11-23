@@ -400,12 +400,11 @@ router.put('/edit/:post_id', auth,async(req,res)=>{
     const newData = {
         customer,
         content
-    }
-    console.log(post_id,newData)
+    } 
     try {
-        const post = await Post.findOneAndUpdate(post_id,newData);
+        const post = await Post.findOneAndUpdate({_id:post_id},newData);
         await post.save()
-        res.status(200).send(post)
+        res.status(200).json({msg: 'Bài viết đã sửa!!'})
     } catch (error) {
         console.error(err.message);
         res.status(500).send('Server error!!!')
